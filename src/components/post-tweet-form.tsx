@@ -69,8 +69,8 @@ export default function PostTweetForm() {
   };
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleFileChange(e, (fileData) => {
-      setFile(fileData);
+    handleFileChange(e, (photo) => {
+      setFile(photo);
     });
   };
 
@@ -80,12 +80,14 @@ export default function PostTweetForm() {
     if (!user || isLoading || tweet === "" || tweet.length > 180) return;
     try {
       setLoading(true);
-      await addDoc(collection(db, "tweet"), {
+      await addDoc(collection(db, "tweets"), {
         tweet,
-        createAt: Date.now(),
+        createdAt: Date.now(),
         username: user.displayName || "Anonymous",
         userID: user.uid,
+        photo: file,
       });
+
       setTweet("");
       setFile(null);
     } catch (e) {

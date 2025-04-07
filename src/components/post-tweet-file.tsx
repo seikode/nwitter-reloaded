@@ -1,6 +1,6 @@
 export const handleFileChange = (
   event: React.ChangeEvent<HTMLInputElement>,
-  onFileLoad: (fileData: string) => void
+  onFileLoad: (photo: string) => void
 ) => {
   const { files } = event.target;
   if (files && files.length === 1 && files[0].size < 1 * 1024 * 1024) {
