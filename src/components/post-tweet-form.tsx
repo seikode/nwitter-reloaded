@@ -84,7 +84,7 @@ export default function PostTweetForm() {
         tweet,
         createdAt: Date.now(),
         username: user.displayName || "Anonymous",
-        userID: user.uid,
+        userId: user.uid,
         photo: file,
       });
 

@@ -30,6 +30,7 @@ const Payload = styled.p`
 `;
 
 const DeleteButton = styled.button`
+  margin-right: 10px;
   background-color: tomato;
   color: white;
   font-weight: 600;
@@ -47,7 +48,7 @@ export default function Tweet({ username, photo, tweet, userId, id }: ITweet) {
     const ok = confirm("Are you sure you want to delete this tweet?");
     if (!ok || user?.uid !== userId) return;
     try {
-      await deleteDoc(doc(db, "tweet", id));
+      await deleteDoc(doc(db, "tweets", id));
     } catch (e) {
       console.log(e);
     } finally {
